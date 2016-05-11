@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 
 /* This is the first class for our JavaFX application that contains the main method. As well as setting
  * everything in motion, it also contains a method to stop the program running. */
-
 public class Application
 {
     /* Our app needs a connection to the database, and this is all handled by the DatabaseConnection 
