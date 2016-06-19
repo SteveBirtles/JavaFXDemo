@@ -40,11 +40,19 @@ public class SceneController
         /* The following assertions check to see if the JavaFX controls exists. If one of these fails, the
          * application won't work. If the control names in Scene Builder don't match the variables this fails. */ 
         System.out.println("Asserting controls...");
-        assert backgroundPane != null : "Can't find background pane.";
-        assert yesButton != null : "Can't find yes button.";
-        assert noButton != null : "Can't find yes button.";
-        assert exitButton != null : "Can't find exit button.";
-        assert listView != null : "Can't find list box.";
+        try
+        {
+        	assert backgroundPane != null : "Can't find background pane.";
+        	assert yesButton != null : "Can't find yes button.";
+        	assert noButton != null : "Can't find yes button.";
+        	assert exitButton != null : "Can't find exit button.";
+            assert listView != null : "Can't find list box.";
+        }
+        catch (AssertionError ae)
+        {
+            System.out.println("FXML assertion failure: " + ae.getMessage());
+            Application.terminate();
+        }
 
         /* Next, we load the list of fruit from the database and populate the listView. */
         System.out.println("Populating scene with items from the database...");        
