@@ -18,7 +18,7 @@ public class Scene2Controller
 
     public void prepareStageEvents(Stage stage)
     {
-        System.out.println("Preparing stage...");
+        System.out.println("Preparing stage events...");
 
         this.stage = stage;
 
