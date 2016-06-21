@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="backgroundPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
+<Pane fx:id="backgroundPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
 
    <children>
 
@@ -15,6 +15,7 @@
       <Button fx:id="exitButton" layoutX="582.0" layoutY="22.0" onMouseClicked="#exitClicked" prefHeight="52.0" prefWidth="151.0" text="Exit" />
       
       <ListView fx:id="listView" layoutX="28.0" layoutY="22.0" onKeyPressed="#listViewClicked" onMouseClicked="#listViewClicked" prefHeight="393.0" prefWidth="527.0" />
+      <Button fx:id="newSceneButton" layoutX="582.0" layoutY="236.0" onMouseClicked="#openNewScene" prefHeight="52.0" prefWidth="151.0" text="Yes" />
 
    </children>
 
