@@ -24,9 +24,8 @@ public class Scene2Controller
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
-                    System.out.println("Close button was clicked!");
+                    System.out.println("Scene2 close button was clicked!");
                     stage.close();
-                    Application.terminate();
                 }
             });
 

@@ -44,6 +44,7 @@ target1.editor.x=-8
 target1.editor.y=-8
 target1.height=130
 target1.name=Scene2Controller
+target1.naviview.expanded=true
 target1.showInterface=false
 target1.type=ClassTarget
 target1.typeParameters=
