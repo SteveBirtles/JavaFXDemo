@@ -98,7 +98,7 @@ public class SceneController
             stage2.setScene(new Scene(loader.load()));
             stage2.show();           
             Scene2Controller controller2 = loader.getController();
-            controller2.prepareStage(stage2);
+            controller2.prepareStageEvents(stage2);
         }
         catch (Exception ex)
         {
