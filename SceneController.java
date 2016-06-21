@@ -18,6 +18,7 @@ public class SceneController
     @FXML   private Button yesButton;
     @FXML   private Button noButton;
     @FXML   private Button exitButton;
+    @FXML   private Button newSceneButton;
     @FXML   private ListView listView;
 
     public SceneController()          // The constructor method, called first when the scene is loaded.
@@ -44,6 +45,7 @@ public class SceneController
         assert yesButton != null : "Can't find yes button.";
         assert noButton != null : "Can't find yes button.";
         assert exitButton != null : "Can't find exit button.";
+        assert newSceneButton != null : "Can't find new scene button.";
         assert listView != null : "Can't find list box.";
 
         /* Next, we load the list of fruit from the database and populate the listView. */
@@ -80,6 +82,27 @@ public class SceneController
     @FXML   void noClicked()
     {
         System.out.println("No was clicked!");
+    }
+
+    @FXML   void openNewScene()
+    {
+
+        FXMLLoader loader = new FXMLLoader(Application.class.getResource("DemoScene2.fxml"));
+
+        try
+        {
+            Stage stage2 = new Stage();
+            stage2.setTitle("JavaFX Demo 2");
+            stage2.setScene(new Scene(loader.load()));
+            stage2.show();           
+            Scene2Controller controller2 = loader.getController();
+            controller2.prepareStage(stage2);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     @FXML   void exitClicked()
