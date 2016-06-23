@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 
 public class DatabaseConnection {
 
-    private Connection conection = null;
+    private Connection connection = null;
 
     /* This method is the constructor. When a new DatabaseConnection object is created a connection
      * to the database is established using the filename and database drive. */
@@ -15,7 +15,7 @@ public class DatabaseConnection {
         try             // There are many things that can go wrong in establishing a database connection...
         {         
             Class.forName("org.sqlite.JDBC");                               // ... a missing driver class ...
-            conection = DriverManager.getConnection("jdbc:sqlite:" + dbFile); // ... or an error with the file.
+            connection = DriverManager.getConnection("jdbc:sqlite:" + dbFile); // ... or an error with the file.
             System.out.println("Database connection successfully established.");
         } 
         catch (ClassNotFoundException cnfex)    // Catch any database driver error
@@ -34,7 +34,7 @@ public class DatabaseConnection {
     {
         PreparedStatement statement = null;
         try {
-            statement = conection.prepareStatement(query);
+            statement = connection.prepareStatement(query);
         }
         catch (SQLException resultsexception) 
         {
@@ -61,7 +61,7 @@ public class DatabaseConnection {
     {
         System.out.println("Disconnecting from database.");
         try {
-            if (conection != null) conection.close();                        
+            if (connection != null) connection.close();                        
         } 
         catch (SQLException finalexception) 
         {
