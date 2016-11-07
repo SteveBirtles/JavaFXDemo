@@ -31,7 +31,7 @@ public class Application
 
             /* Each scene requires a Window, called a stage. The following creates and displays the stage. */
             Stage stage = new Stage();
-            stage.setTitle("JavaFX Demo");
+            stage.setTitle("JavaFX Table Demo");
             stage.setScene(new Scene(loader.load()));
             stage.show();           
 

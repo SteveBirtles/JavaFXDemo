@@ -2,27 +2,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.List;
+import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 /* Each table you wish to access in your database requires a model class, like this example: */
 public class Fruit
 {
     /* First, map each of the fields (columns) in your table to some public variables. */
-    public int id;
-    public String type;
-    public String colour;
+    private int id;
+    private StringProperty type;
+    private StringProperty colour;
 
     /* Next, prepare a constructor that takes each of the fields as arguements. */
     public Fruit(int id, String type, String colour)
     {
-        this.id = id;
-        this.type = type;
-        this.colour = colour;
+        this.id = id;        
+        setType(type);
+        setColour(colour);
     }
 
-    /* A toString method is vital so that your model items can be sensibly displayed as text. */
-    @Override public String toString()
+    public int getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type.get();
+    }
+
+    public void setType(String type)
     {
-        return (colour + " " + type);
+        this.type = new SimpleStringProperty(type);
+    }
+
+    public String getColour() {
+        return colour.get();
+    }
+
+    public void setColour(String colour)
+    {
+        this.colour = new SimpleStringProperty(colour);
     }
 
     /* Different models will require different read and write methods. Here is an example 'loadAll' method 
@@ -40,8 +58,8 @@ public class Fruit
 
             if (results != null)        // If some results are returned from the query...
             {
-                try {								// ...add each one to the list.
-                    while (results.next()) {        			                           
+                try {                               // ...add each one to the list.
+                    while (results.next()) {                                               
                         list.add( new Fruit(results.getInt("id"), 
                                 results.getString("fruit"), 
                                 results.getString("colour")) );
