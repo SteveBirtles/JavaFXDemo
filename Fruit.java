@@ -8,9 +8,9 @@ import javafx.beans.property.SimpleStringProperty;
 /* Each table you wish to access in your database requires a model class, like this example: */
 public class Fruit
 {
-    /* First, map each of the fields (columns) in your table to some public variables. */
+    /* Firstly, our attributes. StringProperties are needed to use tables, instead of Strings. */
     private int id;
-    private StringProperty type;
+    private StringProperty type;        
     private StringProperty colour;
 
     /* Next, prepare a constructor that takes each of the fields as arguements. */
@@ -21,27 +21,14 @@ public class Fruit
         setColour(colour);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getType() {
-        return type.get();
-    }
-
-    public void setType(String type)
-    {
-        this.type = new SimpleStringProperty(type);
-    }
-
-    public String getColour() {
-        return colour.get();
-    }
-
-    public void setColour(String colour)
-    {
-        this.colour = new SimpleStringProperty(colour);
-    }
+    /* We require getter and setter nethods for the attributes. The String getters hide the StringProperty objects. */    
+    public int getId() { return id; }
+    
+    public String getType() { return type.get(); }
+    public void setType(String type) { this.type = new SimpleStringProperty(type); }    
+    
+    public String getColour() { return colour.get(); }
+    public void setColour(String colour) { this.colour = new SimpleStringProperty(colour); }
 
     /* Different models will require different read and write methods. Here is an example 'loadAll' method 
      * which is passed the target list object to populate. */

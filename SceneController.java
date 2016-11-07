@@ -18,7 +18,7 @@ public class SceneController
     /* These FXML variables exactly corrispond to the controls that make up the scene, as designed in Scene 
      * Builder. It is important to ensure that these match perfectly or the controls won't be interactive. */
     @FXML   private Pane backgroundPane;    
-    @FXML   private TableView<Fruit> mainTable;
+    @FXML   private TableView<Fruit> mainTable;     // Our table control requires a data type, in this case Fruit.
 
     public SceneController()          // The constructor method, called first when the scene is loaded.
     {
@@ -54,20 +54,23 @@ public class SceneController
         /* Next, we load the list of fruit from the database and populate the listView. */
         System.out.println("Populating scene with items from the database...");        
 
-        ObservableList<Fruit> tableList = FXCollections.observableArrayList();
-        Fruit.readAll(tableList);                     // Hand over control to the fruit model to populate this list.
+        ObservableList<Fruit> fruitList = FXCollections.observableArrayList();  // Tables require a special type of list.
+        Fruit.readAll(fruitList);             // Hand over control to the fruit model to populate this list.
 
+        /* The first column is for the Fruit 'type' values */
         TableColumn<Fruit, String> typeColumn = new TableColumn<>("Type");
         typeColumn.setCellValueFactory(new PropertyValueFactory<Fruit, String>("type"));
         typeColumn.setMinWidth(150);
         mainTable.getColumns().add(typeColumn);
 
+        /* The second column is for the Fruit 'colours' */
         TableColumn<Fruit, String> colourColumn = new TableColumn<>("Colour");
         colourColumn.setCellValueFactory(new PropertyValueFactory<Fruit, String>("colour"));
         colourColumn.setMinWidth(150);
         mainTable.getColumns().add(colourColumn);
 
-        mainTable.setItems(tableList);
+        /* Finally, set the list to be displayed in the table. The columns are matched up automatically by JavaFX */
+        mainTable.setItems(fruitList);
 
     }
 
