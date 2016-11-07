@@ -8,29 +8,33 @@ import javafx.beans.property.SimpleStringProperty;
 /* Each table you wish to access in your database requires a model class, like this example: */
 public class Fruit
 {
-    /* Firstly, our attributes. StringProperties are needed to use tables, instead of Strings. */
+    /* Firstly, our attributes need altering to work with tables.
+     * StringProperties are needed instead of Strings. Other types of property are available.
+     * Note also they are private attributes now, not public variables. */
     private int id;
     private StringProperty type;        
     private StringProperty colour;
 
-    /* Next, prepare a constructor that takes each of the fields as arguements. */
-    public Fruit(int id, String type, String colour)
-    {
-        this.id = id;        
-        setType(type);
-        setColour(colour);
-    }
-
-    /* We require getter and setter nethods for the attributes. The String getters hide the StringProperty objects. */    
-    public int getId() { return id; }
-    
+    /* We require getter and setter nethods for the attributes. 
+     * The String getters hide the StringProperty objects. */    
     public String getType() { return type.get(); }
     public void setType(String type) { this.type = new SimpleStringProperty(type); }    
     
     public String getColour() { return colour.get(); }
     public void setColour(String colour) { this.colour = new SimpleStringProperty(colour); }
 
-    /* Different models will require different read and write methods. Here is an example 'loadAll' method 
+    public int getId() { return id; }   // There is no need for a setId method here.
+    
+    /* Our constructor now uses the setter methods for the property attributes. */
+    public Fruit(int id, String type, String colour)
+    {
+        this.id = id;        
+        setType(type);
+        setColour(colour);
+    }
+    
+    /* The following is unchanged from the original branch...
+     * Different models will require different read and write methods. Here is an example 'loadAll' method 
      * which is passed the target list object to populate. */
     public static void readAll(List<Fruit> list)
     {
